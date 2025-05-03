@@ -5,9 +5,12 @@ const gameManager = require('./gameManager');
 
 const app = express();
 const server = http.createServer(app);
+const ORIGIN = process.env.ORIGIN || '*';
 const io = new Server(server, {
+  path: '/ws/',
   cors: {
-    origin: "*"
+    origin: ORIGIN,
+    methods: ["GET", "POST"],
   }
 });
 
